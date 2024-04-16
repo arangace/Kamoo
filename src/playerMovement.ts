@@ -50,9 +50,11 @@ export const MovePlayer = (mouseButtonDown: any, player: GameObj) => {
 };
 
 export const MovePlayerKeyboard = (direction: any, player: GameObj) => {
+  if (player.isInDialogue) {
+    return;
+  }
   // Walk Up
   const keyBoardSpeed = 7.5;
-  console.log(direction);
   if (direction === "up") {
     if (player.curAnim() !== "walk-up") player.play("walk-up");
     player.direction = "up";
