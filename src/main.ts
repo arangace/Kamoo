@@ -85,19 +85,20 @@ k.scene("main", async () => {
   });
 
   // Player movement
+  // Mouse movement
   // k.onMouseDown((mouseBtn) => MovePlayer(mouseBtn, player));
   // Left
-  k.onKeyDown("left", () => MovePlayerKeyboard("left", player));
-  // k.onKeyDown("a", () => MovePlayerKeyboard("left", player));
+  // k.onKeyDown("left", () => MovePlayerKeyboard("left", player));
+  k.onKeyDown("a", () => MovePlayerKeyboard("left", player));
   // Right
-  k.onKeyDown("right", () => MovePlayerKeyboard("right", player));
-  // k.onKeyDown("d", () => MovePlayerKeyboard("right", player));
+  // k.onKeyDown("right", () => MovePlayerKeyboard("right", player));
+  k.onKeyDown("d", () => MovePlayerKeyboard("right", player));
   // Up
-  k.onKeyDown("up", () => MovePlayerKeyboard("up", player));
-  // k.onKeyDown("w", () => MovePlayerKeyboard("up", player));
+  // k.onKeyDown("up", () => MovePlayerKeyboard("up", player));
+  k.onKeyDown("w", () => MovePlayerKeyboard("up", player));
   // Down
-  k.onKeyDown("down", () => MovePlayerKeyboard("down", player));
-  // k.onKeyDown("s", () => MovePlayerKeyboard("down", player));
+  // k.onKeyDown("down", () => MovePlayerKeyboard("down", player));
+  k.onKeyDown("s", () => MovePlayerKeyboard("down", player));
 
   function stopAnims() {
     if (player.direction === "down") {
