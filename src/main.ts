@@ -3,7 +3,7 @@ import init from "./utils/init";
 import { k } from "./kaboomCtx";
 import { displayDialogue } from "./utils/display-dialogue";
 import { setCamScale } from "./utils/set-camscale";
-import { MovePlayer, MovePlayerKeyboard } from "./playerMovement";
+import { MovePlayerKeyboard } from "./playerMovement";
 
 type BoundaryProps = {
   x: number;
