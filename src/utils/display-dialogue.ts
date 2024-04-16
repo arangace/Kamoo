@@ -35,6 +35,8 @@ export function displayDialogue(text: string, onDisplayEnd: () => void) {
       dialogue.innerHTML = "";
       clearTimeout(timeout);
       closeButton.removeEventListener("click", handleCloseBtnClick);
+      document.getElementById("game")?.focus();
+
       dialogueModalOpen = false;
     };
 
