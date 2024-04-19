@@ -1,4 +1,4 @@
-export const scaleFactor = 1;
+export const scaleFactor = 4;
 
 export const dialogueData: any = {
   pc: "This is my computer",
