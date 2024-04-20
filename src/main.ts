@@ -20,7 +20,7 @@ k.scene("main", async () => {
   const mapData = await (await fetch("./assets/map/map.json")).json();
   const layers: any = mapData.layers;
 
-  const map = k.add([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
+  const map = k.add([k.sprite("map"), k.pos(), k.scale(scaleFactor)]);
 
   const player = k.make([
     k.sprite("spritesheet", { anim: "idle-down" }),
