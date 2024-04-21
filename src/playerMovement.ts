@@ -1,4 +1,5 @@
 import { GameObj } from "kaboom";
+import { keyBoardSpeed } from "./constants";
 
 // export const MovePlayer = (mouseButtonDown: any, player: GameObj) => {
 //   //Check if the user is using the left mouse click and isn't currently locked in dialogue
@@ -53,7 +54,6 @@ export const MovePlayerKeyboard = (direction: string, player: GameObj) => {
     return;
   }
   // Walk Up
-  const keyBoardSpeed = 7.5;
   if (direction === "up") {
     if (player.curAnim() !== "walk-up") player.play("walk-up");
     player.direction = "up";

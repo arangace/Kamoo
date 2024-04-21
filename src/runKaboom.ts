@@ -1,6 +1,5 @@
-import { dialogueData, scaleFactor } from "./constants";
+import { scaleFactor } from "./constants";
 import init from "./utils/init";
-import { displayDialogue } from "./utils/display-dialogue";
 import { setCamScale } from "./utils/set-camscale";
 import { MovePlayerKeyboard } from "./playerMovement";
 import { KaboomCtx } from "kaboom";
@@ -52,14 +51,16 @@ export default function runKaboom(k: KaboomCtx) {
             k.pos(currentBoundary.x, currentBoundary.y),
             currentBoundary.name,
           ]);
-          if (currentBoundary.name) {
-            player.onCollide(currentBoundary.name, () => {
-              player.isInDialogue = true;
-              displayDialogue(dialogueData[currentBoundary.name], () => {
-                player.isInDialogue = false;
-              });
-            });
-          }
+          // Commented out boundary dialogue code
+
+          // if (currentBoundary.name) {
+          //   player.onCollide(currentBoundary.name, () => {
+          //     player.isInDialogue = true;
+          //     displayDialogue(dialogueData[currentBoundary.name], () => {
+          //       player.isInDialogue = false;
+          //     });
+          //   });
+          // }
         }
         continue;
       }
