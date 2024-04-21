@@ -18,8 +18,3 @@
 License:
 
 This project is licensed under the MIT License (https://opensource.org/license/mit).
-
-Additional Notes:
-
-This is a foundational template. Feel free to expand on it with more features and complexity.
-Refer to the KaboomJS documentation (https://kaboomjs.com/) for in-depth information on using the game engine.
