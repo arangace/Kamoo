@@ -8,7 +8,7 @@ import { playerCharacter } from "../kaboomCtx";
 const forestScene = (kaboomContext: KaboomCtx) => {
   const player = playerCharacter;
   // Scene logic starts here..
-  kaboomContext.scene("forest", async (spawnPoints) => {
+  kaboomContext.scene("forest", async () => {
     const mapData = await (await fetch("/assets/map/forest.json")).json();
     const layers = mapData.layers;
 
@@ -39,7 +39,7 @@ const forestScene = (kaboomContext: KaboomCtx) => {
       }
       if (layer.name === "spawnpoints") {
         layer.objects.forEach((entity: EntityType) => {
-          if (entity.name === spawnPoints) {
+          if (entity.name === "player") {
             player.pos = kaboomContext.vec2(
               (map.pos.x + entity.x) * scaleFactor,
               (map.pos.y + entity.y) * scaleFactor
