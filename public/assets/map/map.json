@@ -1371,6 +1371,18 @@
                  "width":0,
                  "x":1473.33333333333,
                  "y":474.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":81,
+                 "name":"foest",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":799.5,
+                 "y":836.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2153,7 +2165,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":81,
+ "nextobjectid":82,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
