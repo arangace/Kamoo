@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import runKaboom from "./runKaboom";
 import kaboom from "kaboom";
+import Forest from "./scenes/Forest";
 
 function App() {
   const canvasRef = useRef(null);
