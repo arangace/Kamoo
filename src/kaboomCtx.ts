@@ -1,9 +1,13 @@
-// import kaboom from "kaboom";
+import { GameObj, KaboomCtx } from "kaboom";
 
-// const canvas = document.getElementById("game") as HTMLCanvasElement;
+interface Player extends GameObj {}
 
-// export const k = kaboom({
-//   global: false,
-//   touchToMouse: true,
-//   canvas: canvas,
-// });
+export let kaboomContext: KaboomCtx;
+export let playerCharacter: Player;
+
+export const setContext = (KContext: KaboomCtx) => {
+  kaboomContext = KContext;
+};
+export const setPlayer = (player: Player) => {
+  playerCharacter = player;
+};

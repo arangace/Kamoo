@@ -1,17 +1,18 @@
 import { useEffect, useRef } from "react";
 import runKaboom from "./runKaboom";
 import kaboom from "kaboom";
-import Forest from "./scenes/Forest";
+import { setContext } from "./kaboomCtx";
 
 function App() {
   const canvasRef = useRef(null);
-
   useEffect(() => {
-    const k = kaboom({
-      global: false,
-      canvas: canvasRef.current!,
-    });
-    runKaboom(k);
+    setContext(
+      kaboom({
+        global: false,
+        canvas: canvasRef.current!,
+      })
+    );
+    runKaboom();
   }, []);
 
   return (
