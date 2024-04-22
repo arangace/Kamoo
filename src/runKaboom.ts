@@ -1,10 +1,8 @@
 import init from "./utils/init";
 import { kaboomContext } from "./kaboomCtx";
-import forestScene from "./scenes/Forest";
-import townScene from "./scenes/Town";
 import { MovePlayerKeyboard } from "./playerMovement";
 import { setCamScale } from "./utils/set-camscale";
-import { BoundaryProps } from "./types";
+import { BoundaryProps, EntityType } from "./types";
 import { scaleFactor } from "./constants";
 
 export default function runKaboom() {
@@ -64,7 +62,7 @@ export default function runKaboom() {
         continue;
       }
       if (layer.name === "spawnpoints") {
-        layer.objects.forEach((entity) => {
+        layer.objects.forEach((entity: EntityType) => {
           if (entity.name === spawnPoints) {
             player.pos = k.vec2(
               (map.pos.x + entity.x) * scaleFactor,
