@@ -197,6 +197,31 @@ export default function runKaboom(k: KaboomCtx) {
           }
         }
       }
+      if (layer.name === "transitions") {
+        for (const transitions in layer.objects) {
+          const currentBoundary: BoundaryProps = layer.objects[transitions];
+          map.add([
+            k.area({
+              shape: new k.Rect(
+                k.vec2(0),
+                currentBoundary.width,
+                currentBoundary.height
+              ),
+            }),
+            k.body({ isStatic: true }),
+            k.pos(currentBoundary.x, currentBoundary.y),
+            currentBoundary.name,
+          ]);
+          // Commented out boundary dialogue code
+          if (currentBoundary.name) {
+            player.onCollide(currentBoundary.name, () => {
+              console.log("transitioning..");
+              k.go("main");
+            });
+          }
+        }
+        continue;
+      }
     }
 
     k.onResize(() => {
