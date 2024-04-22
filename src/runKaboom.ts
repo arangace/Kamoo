@@ -12,15 +12,11 @@ type BoundaryProps = {
   name: string;
 };
 
-export default function runKaboom(k: KaboomCtx, spawnLocation: string) {
+export default function runKaboom(k: KaboomCtx) {
   // Initialise the games scene, player, map, etc
   init(k);
-  let spawnPoint = spawnLocation;
-  if (!spawnPoint) {
-    spawnPoint = "player";
-  }
-  console.log("came from ", spawnPoint);
-  k.scene("main", async () => {
+
+  k.scene("main", async (spawnPoints) => {
     const mapData = await (await fetch("/assets/map/map.json")).json();
     const layers = mapData.layers;
 
@@ -70,7 +66,7 @@ export default function runKaboom(k: KaboomCtx, spawnLocation: string) {
       }
       if (layer.name === "spawnpoints") {
         layer.objects.forEach((entity) => {
-          if (entity.name === spawnPoint) {
+          if (entity.name === spawnPoints) {
             player.pos = k.vec2(
               (map.pos.x + entity.x) * scaleFactor,
               (map.pos.y + entity.y) * scaleFactor
