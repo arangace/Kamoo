@@ -9,6 +9,7 @@ const forestScene = (kaboomContext: KaboomCtx) => {
   const player = playerCharacter;
   // Scene logic starts here..
   kaboomContext.scene("forest", async (spawnPoints) => {
+    console.log("in the forest..");
     const mapData = await (await fetch("/assets/map/forest.json")).json();
     const layers = mapData.layers;
 

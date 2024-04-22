@@ -12,8 +12,8 @@ export const dialogueData = {
   "sofa-table": "Shall we take a seat?",
 };
 export const keyBoardSpeed = (): number => {
-  if (window.location.origin === "localhost") {
-    return 8;
+  if (window.location.hostname === "localhost") {
+    return 20;
   } else {
     return 5;
   }

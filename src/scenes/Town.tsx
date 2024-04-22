@@ -4,7 +4,7 @@ import { BoundaryProps, EntityType } from "../types";
 import { setCamScale } from "../utils/set-camscale";
 import { MovePlayerKeyboard } from "../playerMovement";
 import { playerCharacter } from "../kaboomCtx";
-const TownScene = (kaboomContext: KaboomCtx) => {
+const townScene = (kaboomContext: KaboomCtx) => {
   const player = playerCharacter;
   // Scene logic starts here..
   kaboomContext.scene("town", async (spawnPoints) => {
@@ -122,4 +122,4 @@ const TownScene = (kaboomContext: KaboomCtx) => {
     });
   });
 };
-export default TownScene;
+export default townScene;
