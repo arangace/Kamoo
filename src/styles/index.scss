@@ -1,12 +1,12 @@
 @font-face {
   font-family: monogram;
-  src: url("/fonts/monogram.ttf");
+  src: url("/fonts/monogram.ttf") format("truetype");
 }
-
 body {
   font-family: monogram, monospace;
   font-size: 2rem;
   overflow: hidden;
+  margin: 0;
 }
 
 #app {
