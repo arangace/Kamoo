@@ -12,10 +12,14 @@ type BoundaryProps = {
   name: string;
 };
 
-export default function runKaboom(k: KaboomCtx) {
+export default function runKaboom(k: KaboomCtx, spawnLocation: string) {
   // Initialise the games scene, player, map, etc
   init(k);
-
+  let spawnPoint = spawnLocation;
+  if (!spawnPoint) {
+    spawnPoint = "player";
+  }
+  console.log("came from ", spawnPoint);
   k.scene("main", async () => {
     const mapData = await (await fetch("/assets/map/map.json")).json();
     const layers = mapData.layers;
@@ -65,18 +69,16 @@ export default function runKaboom(k: KaboomCtx) {
         continue;
       }
       if (layer.name === "spawnpoints") {
-        for (const entity of layer.objects) {
-          if (entity.name === "player") {
+        layer.objects.forEach((entity) => {
+          if (entity.name === spawnPoint) {
             player.pos = k.vec2(
               (map.pos.x + entity.x) * scaleFactor,
               (map.pos.y + entity.y) * scaleFactor
             );
             k.add(player);
-            continue;
           }
-        }
+        });
       }
-
       if (layer.name === "transitions") {
         for (const transitions in layer.objects) {
           const currentBoundary: BoundaryProps = layer.objects[transitions];
@@ -95,7 +97,6 @@ export default function runKaboom(k: KaboomCtx) {
           // Commented out boundary dialogue code
           if (currentBoundary.name) {
             player.onCollide(currentBoundary.name, () => {
-              console.log("transitioning..");
               k.go("forest");
             });
           }
@@ -216,7 +217,7 @@ export default function runKaboom(k: KaboomCtx) {
           if (currentBoundary.name) {
             player.onCollide(currentBoundary.name, () => {
               console.log("transitioning..");
-              k.go("main");
+              k.go("main", "forest");
             });
           }
         }
@@ -268,5 +269,5 @@ export default function runKaboom(k: KaboomCtx) {
   });
 
   //Starts the game on the 'main' screen
-  k.go("main");
+  k.go("main", "player");
 }
