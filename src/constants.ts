@@ -11,4 +11,4 @@ export const dialogueData = {
   "cs-degree": "More paper..",
   "sofa-table": "Shall we take a seat?",
 };
-export const keyBoardSpeed = 17.5;
+export const keyBoardSpeed = 5;
