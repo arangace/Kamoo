@@ -12,11 +12,14 @@ export default function runKaboom() {
   // Register all the scenes for the game
   // townScene(k);
   // forestScene(k);
+  
 
+  
   k.scene("town", async (spawnPoints) => {
     const mapData = await (await fetch("/assets/map/map.json")).json();
     const layers = mapData.layers;
-
+	const music = k.play("town-music", {volume: 0.1});
+	
     const map = k.add([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
     const player = k.make([
       k.sprite("spritesheet", { anim: "idle-down" }),
@@ -32,6 +35,11 @@ export default function runKaboom() {
       },
       "player",
     ]);
+
+	music.play();
+
+	 
+	
     for (const layer of layers) {
       if (layer.name === "boundaries") {
         for (const boundary in layer.objects) {
@@ -91,6 +99,7 @@ export default function runKaboom() {
           if (currentBoundary.name) {
             player.onCollide(currentBoundary.name, () => {
               k.go("forest");
+			  music.stop();
             });
           }
         }
