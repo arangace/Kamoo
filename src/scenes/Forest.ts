@@ -1,12 +1,14 @@
 import { KaboomCtx } from "kaboom";
 import { scaleFactor } from "../constants";
-import { BoundaryProps } from "../types";
+import { BoundaryProps, EntityType } from "../types";
 import { setCamScale } from "../utils/set-camscale";
 import { MovePlayerKeyboard } from "../playerMovement";
+import { playerCharacter } from "../kaboomCtx";
 
 const forestScene = (kaboomContext: KaboomCtx) => {
-  kaboomContext.scene("forest", async () => {
-    console.log("forest");
+  const player = playerCharacter;
+  // Scene logic starts here..
+  kaboomContext.scene("forest", async (spawnPoints) => {
     const mapData = await (await fetch("/assets/map/forest.json")).json();
     const layers = mapData.layers;
 
@@ -15,22 +17,7 @@ const forestScene = (kaboomContext: KaboomCtx) => {
       kaboomContext.pos(0),
       kaboomContext.scale(scaleFactor),
     ]);
-    const player = kaboomContext.make([
-      kaboomContext.sprite("spritesheet", { anim: "idle-down" }),
-      kaboomContext.area({
-        shape: new kaboomContext.Rect(kaboomContext.vec2(0, 3), 10, 10),
-      }),
-      kaboomContext.body(),
-      kaboomContext.anchor("center"),
-      kaboomContext.pos(),
-      kaboomContext.scale(scaleFactor),
-      {
-        speed: 250,
-        direction: "down",
-        isInDialogue: false,
-      },
-      "player",
-    ]);
+
     for (const layer of layers) {
       if (layer.name === "boundaries") {
         for (const boundary in layer.objects) {
@@ -51,16 +38,15 @@ const forestScene = (kaboomContext: KaboomCtx) => {
         continue;
       }
       if (layer.name === "spawnpoints") {
-        for (const entity of layer.objects) {
-          if (entity.name === "player") {
+        layer.objects.forEach((entity: EntityType) => {
+          if (entity.name === spawnPoints) {
             player.pos = kaboomContext.vec2(
               (map.pos.x + entity.x) * scaleFactor,
               (map.pos.y + entity.y) * scaleFactor
             );
             kaboomContext.add(player);
-            continue;
           }
-        }
+        });
       }
       if (layer.name === "transitions") {
         for (const transitions in layer.objects) {
@@ -81,7 +67,7 @@ const forestScene = (kaboomContext: KaboomCtx) => {
           if (currentBoundary.name) {
             player.onCollide(currentBoundary.name, () => {
               console.log("transitioning..");
-              kaboomContext.go("main", "forest");
+              kaboomContext.go("town", "forest");
             });
           }
         }

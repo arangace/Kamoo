@@ -16,3 +16,8 @@ export type BoundaryProps = {
   height: number;
   name: string;
 };
+export interface EntityType {
+  name: string;
+  x: number;
+  y: number;
+}
