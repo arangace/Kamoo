@@ -3,7 +3,6 @@ import init from "./utils/init";
 import { setCamScale } from "./utils/set-camscale";
 import { MovePlayerKeyboard } from "./playerMovement";
 import { KaboomCtx } from "kaboom";
-import { MapChange } from "./utils/map-change";
 
 type BoundaryProps = {
   x: number;
@@ -152,11 +151,7 @@ export default function runKaboom(k: KaboomCtx) {
     const mapData = await (await fetch("/assets/map/forest.json")).json();
     const layers = mapData.layers;
 
-    const map = k.add([
-      k.sprite("spritesheet"),
-      k.pos(0),
-      k.scale(scaleFactor),
-    ]);
+    const map = k.add([k.sprite("forest"), k.pos(0), k.scale(scaleFactor)]);
     const player = k.make([
       k.sprite("spritesheet", { anim: "idle-down" }),
       k.area({ shape: new k.Rect(k.vec2(0, 3), 10, 10) }),

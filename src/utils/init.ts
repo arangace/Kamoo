@@ -32,6 +32,7 @@ export default function init(context: KaboomCtx) {
   });
 
   context.loadSprite("map", "./assets/map/map.png");
+  context.loadSprite("forest", "./assets/map/forest.png");
 
   context.setBackground(context.Color.fromHex("#311047"));
   // Resizing based on screen size
