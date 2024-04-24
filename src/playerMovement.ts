@@ -57,13 +57,13 @@ export const MovePlayerKeyboard = (direction: string, player: GameObj) => {
   if (direction === "up") {
     if (player.curAnim() !== "walk-up") player.play("walk-up");
     player.direction = "up";
-    player.pos.y = player.pos.y - keyBoardSpeed;
+    player.pos.y = player.pos.y - keyBoardSpeed();
     return;
   }
   // Walk Down
   else if (direction === "down") {
     if (player.curAnim() !== "walk-down") player.play("walk-down");
-    player.pos.y = player.pos.y + keyBoardSpeed;
+    player.pos.y = player.pos.y + keyBoardSpeed();
     player.direction = "down";
     return;
   }
@@ -71,7 +71,7 @@ export const MovePlayerKeyboard = (direction: string, player: GameObj) => {
   else if (direction === "right") {
     player.flipX = false;
     if (player.curAnim() !== "walk-side") player.play("walk-side");
-    player.pos.x = player.pos.x + keyBoardSpeed;
+    player.pos.x = player.pos.x + keyBoardSpeed();
     player.direction = "right";
     return;
   }
@@ -79,7 +79,7 @@ export const MovePlayerKeyboard = (direction: string, player: GameObj) => {
   else if (direction === "left") {
     player.flipX = true;
     if (player.curAnim() !== "walk-side") player.play("walk-side");
-    player.pos.x = player.pos.x - keyBoardSpeed;
+    player.pos.x = player.pos.x - keyBoardSpeed();
     player.direction = "left";
     return;
   } else {

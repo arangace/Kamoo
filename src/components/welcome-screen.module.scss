@@ -1,0 +1,39 @@
+.pageContainer {
+  background-image: url("/assets/images/sky.jpg");
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: none;
+  display: inline-block;
+}
+
+.pageWrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pageContent {
+  padding: 3rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+  font-size: 10rem;
+}
+.playButton {
+  font-family: monogram, monospace;
+  margin: 0;
+  font-size: 2rem;
+  background: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  &:hover {
+    transition: all 0.5s ease;
+    cursor: pointer;
+    background-color: rgb(40, 111, 192);
+    color: white;
+  }
+}

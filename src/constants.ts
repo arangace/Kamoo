@@ -11,4 +11,10 @@ export const dialogueData = {
   "cs-degree": "More paper..",
   "sofa-table": "Shall we take a seat?",
 };
-export const keyBoardSpeed = 10;
+export const keyBoardSpeed = (): number => {
+  if (window.location.hostname === "localhost") {
+    return 20;
+  } else {
+    return 5;
+  }
+};

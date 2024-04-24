@@ -9,3 +9,15 @@ export type TextContent = {
   "cs-degree": string;
   "sofa-table": string;
 };
+export type BoundaryProps = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  name: string;
+};
+export interface EntityType {
+  name: string;
+  x: number;
+  y: number;
+}

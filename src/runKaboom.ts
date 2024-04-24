@@ -1,22 +1,19 @@
-import { scaleFactor } from "./constants";
 import init from "./utils/init";
-import { setCamScale } from "./utils/set-camscale";
+import { kaboomContext } from "./kaboomCtx";
 import { MovePlayerKeyboard } from "./playerMovement";
-import { KaboomCtx } from "kaboom";
+import { setCamScale } from "./utils/set-camscale";
+import { BoundaryProps, EntityType } from "./types";
+import { scaleFactor } from "./constants";
 
-type BoundaryProps = {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  name: string;
-};
-
-export default function runKaboom(k: KaboomCtx) {
+export default function runKaboom() {
+  const k = kaboomContext;
   // Initialise the games scene, player, map, etc
   init(k);
+  // Register all the scenes for the game
+  // townScene(k);
+  // forestScene(k);
 
-  k.scene("main", async (spawnPoints) => {
+  k.scene("town", async (spawnPoints) => {
     const mapData = await (await fetch("/assets/map/map.json")).json();
     const layers = mapData.layers;
 
@@ -65,7 +62,7 @@ export default function runKaboom(k: KaboomCtx) {
         continue;
       }
       if (layer.name === "spawnpoints") {
-        layer.objects.forEach((entity) => {
+        layer.objects.forEach((entity: EntityType) => {
           if (entity.name === spawnPoints) {
             player.pos = k.vec2(
               (map.pos.x + entity.x) * scaleFactor,
@@ -213,7 +210,7 @@ export default function runKaboom(k: KaboomCtx) {
           if (currentBoundary.name) {
             player.onCollide(currentBoundary.name, () => {
               console.log("transitioning..");
-              k.go("main", "forest");
+              k.go("town", "forest");
             });
           }
         }
@@ -263,7 +260,6 @@ export default function runKaboom(k: KaboomCtx) {
       stopAnims();
     });
   });
-
   //Starts the game on the 'main' screen
-  k.go("main", "player");
+  k.go("town", "player");
 }
