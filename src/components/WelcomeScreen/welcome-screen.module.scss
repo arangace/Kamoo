@@ -19,21 +19,20 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 3;
 }
 .title {
   font-size: 10rem;
 }
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+}
 .playButton {
-  font-family: monogram, monospace;
-  margin: 0;
-  font-size: 2rem;
-  background: none;
-  outline: none;
-  padding: 0.5rem 1rem;
-  &:hover {
-    transition: all 0.5s ease;
-    cursor: pointer;
-    background-color: rgb(40, 111, 192);
-    color: white;
-  }
+}
+.menuLink {
+  font-size: 3rem;
 }

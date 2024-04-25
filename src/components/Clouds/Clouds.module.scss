@@ -1,0 +1,34 @@
+.cloudsContainer {
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  z-index: -1;
+}
+
+.cloud {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  right: 100vw;
+}
+.left {
+  animation: slide-left 15s linear infinite forwards;
+}
+.right {
+  animation: slide-right 15s linear infinite forwards;
+}
+@keyframes slide-right {
+  from {
+    left: -10vw;
+  }
+  to {
+    left: 110vw;
+  }
+}
+@keyframes slide-left {
+  from {
+    right: -10vw;
+  }
+  to {
+    right: 110vw;
+  }
+}

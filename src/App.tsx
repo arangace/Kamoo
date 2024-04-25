@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import runKaboom from "./runKaboom";
 import kaboom from "kaboom";
 import { setContext } from "./kaboomCtx";
-import WelcomeScreen from "./components/WelcomeScreen";
+import WelcomeScreen from "./components/WelcomeScreen/WelcomeScreen";
 
 function App() {
   const canvasRef = useRef(null);
