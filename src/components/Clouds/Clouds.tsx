@@ -13,12 +13,12 @@ const Clouds = () => {
 
   // Function to generate initial cloud data (optional)
   const generateClouds = () => {
-    const cloudCount = 5; // Adjust the number of clouds
+    const cloudCount = 7; // Adjust the number of clouds
     const newClouds = [];
     for (let i = 0; i < cloudCount; i++) {
       newClouds.push({
         topOffset: Math.floor(Math.random() * 25),
-        animationSpeed: Math.random() * 5 + 20,
+        animationSpeed: Math.random() * 10 + 15,
         animationDelay: Math.random() * 10 + 3,
         direction: Math.random() < 0.5 ? "right" : "left",
       });
